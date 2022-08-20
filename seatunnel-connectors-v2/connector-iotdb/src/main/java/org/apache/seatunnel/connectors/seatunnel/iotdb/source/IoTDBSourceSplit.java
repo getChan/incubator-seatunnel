@@ -15,16 +15,32 @@
  * limitations under the License.
  */
 
-package org.apache.seatunnel.connectors.seatunnel.http.config;
+package org.apache.seatunnel.connectors.seatunnel.iotdb.source;
 
-public class HttpConfig {
-    public static final String URL = "url";
-    public static final String METHOD = "method";
-    public static final String METHOD_DEFAULT_VALUE = "GET";
-    public static final String HEADERS = "headers";
-    public static final String PARAMS = "params";
-    public static final String BODY = "body";
-    public static final String SCHEMA = "schema";
-    public static final String FORMAT = "format";
-    public static final String DEFAULT_FORMAT = "json";
+import org.apache.seatunnel.api.source.SourceSplit;
+
+public class IoTDBSourceSplit implements SourceSplit {
+
+    private static final long serialVersionUID = -1L;
+
+    private String splitId;
+
+    /**
+     * final query statement
+     */
+    private String query;
+
+    @Override
+    public String splitId() {
+        return splitId;
+    }
+
+    public String getQuery() {
+        return query;
+    }
+
+    public IoTDBSourceSplit(String splitId, String query) {
+        this.splitId = splitId;
+        this.query = query;
+    }
 }
